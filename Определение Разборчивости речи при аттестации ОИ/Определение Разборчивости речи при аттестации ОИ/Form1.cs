@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 
 namespace Определение_Разборчивости_речи_при_аттестации_ОИ
@@ -18,6 +19,7 @@ namespace Определение_Разборчивости_речи_при_ат
             InitializeComponent();
             SetVisibility();
         }
+
 
         public double FillingDataR()
         {
@@ -196,13 +198,52 @@ namespace Определение_Разборчивости_речи_при_ат
         {
             if (checkGOS.Checked && checkSaveFile.Checked && !CheckNumericNull() || checkSaveFile.Checked && !CheckNumericNullNoG())
             {
-                MessageClass MessageAlert = new MessageClass();
-                MessageAlert.ShowMessageAlert();
+                MessageClass messageShow = new MessageClass();
+                messageShow.ShowMessageAlert();
             }
             else
             {
-                MessageClass MessageOk = new MessageClass();
-                MessageOk.ShowMessageOk();
+                if (checkGOS.Checked)
+                {
+                    SaveFile();
+                }
+                else
+                {
+                    SaveFileNoG();
+                }
+            }
+        }
+        private void SaveFile()
+        {
+            SaveFileDialog SaveFileTXT = new SaveFileDialog();
+            if (SaveFileTXT.ShowDialog() == DialogResult.OK)
+            {
+                var name = SaveFileTXT.FileName;
+                SaveFileStringLabel ConvertSave = new SaveFileStringLabel();
+
+                File.WriteAllText(name, ConvertSave.ConvertToStringSaveFile(
+                    Lt_1.Value, Lt_2.Value, Lt_3.Value, Lt_4.Value, Lt_5.Value, Lt_6.Value, Lt_7.Value,
+                    Lc1_1.Value, Lc1_2.Value, Lc1_3.Value, Lc1_4.Value, Lc1_5.Value, Lc1_6.Value, Lc1_7.Value,
+                    Lc2_1.Value, Lc2_2.Value, Lc2_3.Value, Lc2_4.Value, Lc2_5.Value, Lc2_6.Value, Lc2_7.Value,
+                    Lsh_1.Value, Lsh_2.Value, Lsh_3.Value, Lsh_4.Value, Lsh_5.Value, Lsh_6.Value, Lsh_7.Value,
+                    Ractic.Value, calculateDecision.Value));
+            }
+        }
+
+        private void SaveFileNoG()
+        {
+            SaveFileDialog SaveFileTXT = new SaveFileDialog();
+            if (SaveFileTXT.ShowDialog() == DialogResult.OK)
+            {
+                var name = SaveFileTXT.FileName;
+                SaveFileStringLabel ConvertSave = new SaveFileStringLabel();
+
+                File.WriteAllText(name, ConvertSave.ConvertToStringSaveFileNoG(
+                    Lt_2.Value, Lt_3.Value, Lt_4.Value, Lt_5.Value, Lt_6.Value,
+                    Lc1_2.Value, Lc1_3.Value, Lc1_4.Value, Lc1_5.Value, Lc1_6.Value,
+                    Lc2_2.Value, Lc2_3.Value, Lc2_4.Value, Lc2_5.Value, Lc2_6.Value,
+                    Lsh_2.Value, Lsh_3.Value, Lsh_4.Value, Lsh_5.Value, Lsh_6.Value,
+                    Ractic.Value, calculateDecision.Value));
             }
         }
 
