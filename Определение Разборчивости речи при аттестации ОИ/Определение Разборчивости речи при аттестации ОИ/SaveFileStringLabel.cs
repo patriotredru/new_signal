@@ -29,8 +29,8 @@ namespace Определение_Разборчивости_речи_при_ат
                         + "\r\n" + "\r\n" + "\r\n"
 
                         + "Ответы:" + "\r\n"
-                        + "Интегральный индекрс артикуляции равен: " + Convert.ToString(Ractic) + "\r\n"
-                        + "Уровень разборчивости речи равен: " + Convert.ToString(calculateDecision) + "\r\n";
+                        + "Интегральный индекс артикуляции R равен: " + Convert.ToString(Ractic) + "\r\n"
+                        + "Уровень разборчивости речи W равен: " + Convert.ToString(calculateDecision) + "\r\n";
             return AnswerString;
         }
 
@@ -53,8 +53,8 @@ namespace Определение_Разборчивости_речи_при_ат
                         + "\r\n" + "\r\n" + "\r\n"
 
                         + "Ответы:" + "\r\n"
-                        + "Интегральный индекрс артикуляции равен: " + Convert.ToString(Ractic) + "\r\n"
-                        + "Уровень разборчивости речи равен: " + Convert.ToString(calculateDecision) + "\r\n";
+                        + "Интегральный индекс артикуляции R равен: " + Convert.ToString(Ractic) + "\r\n"
+                        + "Уровень разборчивости речи W равен: " + Convert.ToString(calculateDecision) + "\r\n";
             return AnswerString;
         }
 
